@@ -32,3 +32,32 @@
 # *\?
 #   - done? 
 
+# [[:digit:]]
+# ls [[:digit:]]*
+#   - 123..txt
+
+mkdir test
+cd test
+
+function addFile() {
+  for NAME in $@
+  do
+    echo "Adding $NAME"
+    touch $NAME.html
+  done  
+}
+
+addFile test1 test2 test3 test4 test5
+
+read -n 1 -p "Press any key to continue deleting files..."
+
+for FILE in *.html
+do
+  echo "Deleting $FILE"
+  rm $FILE
+done
+
+
+cd ..
+rm -rf test
+
